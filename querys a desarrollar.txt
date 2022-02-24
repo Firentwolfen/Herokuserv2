@@ -1,0 +1,31 @@
+GET
+Especialidad
+Nacionalidad
+Notificaciones
+Datos Usuario
+Medicos
+Promos (condicional true)
+Talleres Pre y Post
+Intervencion
+Creencias
+
+POST
+Crear Usuario
+Ingresar Usuario
+Ingreso Presupuesto
+Asesoria Comercial
+Acuerdo de Nacimiento
+Visita Guiada
+Bono Pad
+For. MQ
+Registrar y Eliminar Taller
+Asesoria Nutricional
+Evaluacion Kinesica
+Asesoria Lactancia
+
+Popup 
+Bienvenido Nacimiento
+Cupon y Promociones
+
+Ver donde esta Talleres Prenatal
+

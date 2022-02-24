@@ -1,0 +1,53 @@
+Cod_Presupuesto:1,
+Rut:16706314-4,
+Fecha_Probable_Operacion:2022-05-02T04:0:0.000Z,
+Prevision:1,
+Tipo_Intervencion:prueba,
+Especialidad:12,
+Medico_Tratante:pedro peres,
+Comentarios_Observaciones:preubas daas
+
+NroDocumento:6706314-4
+FechaPO:3-05-2022
+CodPrevision:
+TipoPrevision:rueba
+Especialidad:2
+NombreDoctor:edro peres
+Comen:reubas daas 23233
+
+Rut_Solicitante  
+Nombre_Medico:uillermo Perez   
+Carnet_Prenatal:ttps:/res.cloudinary.com/app-web-img-cloud/image/upload/v1633107639/kfaxygavfjlzlbtppa01.jpg   
+Cedula_Identidad:ttps:/res.cloudinary.com/app-web-img-cloud/image/upload/v1633107639/kfaxygavfjlzlbtppa01.jpg   
+Programa_Medico:ttps:/res.cloudinary.com/app-web-img-cloud/image/upload/v1633107639/kfaxygavfjlzlbtppa01.jpg   
+Informe_Ecografia:ttps:/res.cloudinary.com/app-web-img-cloud/image/upload/v1633107639/kfaxygavfjlzlbtppa01.jpg   
+Hemografia:ttps:/res.cloudinary.com/app-web-img-cloud/image/upload/v1633107639/kfaxygavfjlzlbtppa01.jpg   
+Glicemia:ttps:/res.cloudinary.com/app-web-img-cloud/image/upload/v1633107639/kfaxygavfjlzlbtppa01.jpg   
+VDRL:ttps:/res.cloudinary.com/app-web-img-cloud/image/upload/v1633107639/kfaxygavfjlzlbtppa01.jpg   
+VIH:ttps:/res.cloudinary.com/app-web-img-cloud/image/upload/v1633107639/kfaxygavfjlzlbtppa01.jpg   
+Orina_Completa:ttps:/res.cloudinary.com/app-web-img-cloud/image/upload/v1633107639/kfaxygavfjlzlbtppa01.jpg   
+Flujo_Vaginal:ttps:/res.cloudinary.com/app-web-img-cloud/image/upload/v1633107639/kfaxygavfjlzlbtppa01.jpg   
+Streoticoco_B:ttps:/res.cloudinary.com/app-web-img-cloud/image/upload/v1633107639/kfaxygavfjlzlbtppa01.jpg   
+Chagas:ttps:/res.cloudinary.com/app-web-img-cloud/image/upload/v1633107639/kfaxygavfjlzlbtppa01.jpg 
+
+Rut_Solicitante:16706314-4
+Nombre_Medico:Guillermo Perez 
+Nacionalidad:17
+Creencias:4 
+Nombre_Gestante:Marisol Diaz
+Nombre_Acom:Antonio Lopez 
+Fecha_Prob_Parto:02-08-2022
+Fecha_Ult_Regla:14-02-2022
+Tipo_Parto:true
+Conversado_Medico:true
+Acomp_Continuo:true
+Metd_No_Farma:{Anestesia,Masajes,Fullar}
+Aromaterapia:false
+Musicoterapia:false
+Uso_Guateros:false
+Contacto_Piel:true
+Permanencia_Bebe:true
+Lactancia_Materna:true
+Asesoria_Lactancia:false
+Firma:https:/res.cloudinary.com/app-web-img-cloud/image/upload/v1633107639/kfaxygavfjlzlbtppa01.jpg
+Observaciones: Pieza Unica
