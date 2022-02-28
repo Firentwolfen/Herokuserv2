@@ -35,7 +35,7 @@ router.put('/gettknexpo',updateexpotkn);
 router.put('/gethorasuser',getAgendaHoraUser);
 router.get('/getEspecialidad',getEspecialidadInfo );
 router.get('/getNacionalidad',getNacionalidadInfo );
-router.get('/getMedicoEspecialidad',getMedicoEspeInfo);
+router.post('/getMedicoEspecialidad',getMedicoEspeInfo);
 router.get('/getCreencias',getCreenciasInfo );
 router.get('/getPrevision',getPrevision );
 router.post('/postPresupuesto',postPresupuesto );
