@@ -55,7 +55,7 @@ const createHoraEvaLact = async (req, res) => {
 
 const getTalleresInfo = async (req, res) => {
     try {
-        const response = await pool.query('SELECT "CodTaller", "NombreTaller", "NombreEspecialidad", "ObservacionTaller","ImagenTaller","NombreTrabajador","ApellidoPaternoTrabajador","NombreTipoTaller" FROM public."Taller" INNER JOIN public."Especialidad" ON public."Taller"."CodEspecialidadTaller" = public."Especialidad"."CodEspecialidad" INNER JOIN public."Trabajador" ON public."Taller"."RutRelator1Taller" = public."Trabajador"."RutTrabajador" INNER JOIN public."TipoTaller" ON public."Taller"."CodTipoTaller" = public."TipoTaller"."CodTipoTaller"');
+        const response = await pool.query('SELECT "VigenteTaller", "CodTaller", "NombreTaller", "NombreEspecialidad", "ObservacionTaller","ImagenTaller","NombreTrabajador","ApellidoPaternoTrabajador","NombreTipoTaller" FROM public."Taller" INNER JOIN public."Especialidad" ON public."Taller"."CodEspecialidadTaller" = public."Especialidad"."CodEspecialidad" INNER JOIN public."Trabajador" ON public."Taller"."RutRelator1Taller" = public."Trabajador"."RutTrabajador" INNER JOIN public."TipoTaller" ON public."Taller"."CodTipoTaller" = public."TipoTaller"."CodTipoTaller"');
        
         //const jsonresp = response.rows;
         //const resultd = je.encrypt(jsonresp);
@@ -218,7 +218,7 @@ const crearUsuario = async (req, res) => {
 
         try {
         
-        const response = await pool.query('INSERT INTO public."Paciente"("NroDocumentoPcte", "TipoDocumentoPcte", "NombrePcte", "ApellidoPaternoPcte", "ApellidoMaternoPcte", "DireccionPcte", "NacionalidadPcte", "EmailPcte", "ContraseñaPcte", "TelefonoPcte", "PrevisionPcte", "FNacPcte", "ObservacionesPcte", "DocumentoAntiguoPcte", "EstadoCivilPcte", "AvalPcte", "FPPPcte", "FUROcte", "EPTok")VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, null, null, $13, null, null, $14, null)', [NroDocumento,TipoDocuemnto,Nombre,ApellidoPaterno,ApellidoMaterno, Direccion, Nacionalidad, Email, pswd2bcrpt, Telefono, Prevision, FechaNacimiento, EstadoCivil,Furo]);
+        const response = await pool.query('INSERT INTO public."Paciente"("NroDocumentoPcte", "TipoDocumentoPcte", "NombrePcte", "ApellidoPaternoPcte", "ApellidoMaternoPcte", "DireccionPcte", "NacionalidadPcte", "EmailPcte", "ContraseñaPcte", "TelefonoPcte", "PrevisionPcte", "FNacPcte", "ObservacionesPcte", "DocumentoAntiguoPcte", "EstadoCivilPcte", "AvalPcte", "FPPPcte", "FUROcte", "EPTok")VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, null, null, $13, null, $14, null, null)', [NroDocumento,TipoDocuemnto,Nombre,ApellidoPaterno,ApellidoMaterno, Direccion, Nacionalidad, Email, pswd2bcrpt, Telefono, Prevision, FechaNacimiento, EstadoCivil,Furo]);
          res.status(201).json({
             ok: true,
             message: 'Usuario Creado Existosamente',
@@ -548,10 +548,10 @@ const getPrevision = async (req, res) => {
 
 const postPresupuesto = async (req, res) => {
      
-     const {NroDocumento,FechaPO,CodPrevision,TipoPrevision,Especialidad,NombreDoctor,Comen} = req.body;
+     const {NroDocumento,FechaPO,TipoPrevision,Intervencion,Especialidad,NombreDoctor,Comen} = req.body;
      
      try {
-         const response = await pool.query('INSERT INTO public."Presupuestos"("Rut", "Fecha_Probable_Operacion", "Prevision", "Tipo_Intervencion", "Especialidad", "Medico_Tratante", "Comentarios_Observaciones") VALUES ($1, $2, $3, $4, $5, $6, $7)', [NroDocumento,FechaPO,CodPrevision,TipoPrevision,Especialidad,NombreDoctor,Comen]);
+         const response = await pool.query('INSERT INTO public."Presupuestos"("Rut", "Fecha_Probable_Operacion", "Prevision", "Tipo_Intervencion", "Especialidad", "Medico_Tratante", "Comentarios_Observaciones") VALUES ($1, $2, $3, $4, $5, $6, $7)', [NroDocumento,FechaPO,TipoPrevision,Intervencion,Especialidad,NombreDoctor,Comen]);
         
          res.status(201).json({
             ok: true,
@@ -628,7 +628,7 @@ Rut_Solicitante,
 Nombre_Medico,
 Nacionalidad,
 Creencias ,
-Nombre_Gestante ,
+Nombre_Gestante,
 Nombre_Acom ,
 Fecha_Prob_Parto,
 Fecha_Ult_Regla,
@@ -643,12 +643,17 @@ Contacto_Piel,
 Permanencia_Bebe,
 Lactancia_Materna,
 Asesoria_Lactancia,
-Firma,
 Observaciones,
     } = req.body;
     
     try {
-        const response = await pool.query('INSERT INTO public."Acuerdo_Parto"("Rut_Solicitante", "Nombre_Medico", "Nacionalidad", "Creencias", "Nombre_Gestante", "Nombre_Acom", "Fecha_Prob_Parto", "Fecha_Ult_Regla", "Tipo_Parto", "Conversado_Medico", "Acomp_Continuo", "Metd_No_Farma", "Aromaterapia", "Musicoterapia", "Uso_Guateros", "Contacto_Piel", "Permanencia_Bebe", "Lactancia_Materna", "Asesoria_Lactancia", "Firma", "Observaciones") VALUES ( $1, $2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21)', [Rut_Solicitante,Nombre_Medico,Nacionalidad,Creencias ,Nombre_Gestante ,Nombre_Acom ,Fecha_Prob_Parto,Fecha_Ult_Regla,Tipo_Parto,Conversado_Medico,Acomp_Continuo,Metd_No_Farma,Aromaterapia,Musicoterapia,Uso_Guateros,Contacto_Piel,Permanencia_Bebe,Lactancia_Materna,Asesoria_Lactancia,Firma,Observaciones,]);
+        const response = await pool.query('INSERT INTO public."Acuerdo_Parto"("Rut_Solicitante","Nombre_Medico", "Nacionalidad", "Creencias", "Nombre_Acom", "Fecha_Prob_Parto", "Fecha_Ult_Regla", "Tipo_Parto", "Conversado_Medico", "Acomp_Continuo", "Aromaterapia", "Musicoterapia", "Uso_Guateros", "Contacto_Piel", "Permanencia_Bebe", "Lactancia_Materna", "Asesoria_Lactancia", "Observaciones", "Metd_No_Farma", "Nombre_Gestante") VALUES ( $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20)', [Rut_Solicitante,Nombre_Medico,Nacionalidad,Creencias,Nombre_Acom,Fecha_Prob_Parto,Fecha_Ult_Regla,Tipo_Parto,Conversado_Medico,Acomp_Continuo,Aromaterapia,Musicoterapia,Uso_Guateros,Contacto_Piel,Permanencia_Bebe,Lactancia_Materna,Asesoria_Lactancia,Observaciones,Metd_No_Farma,Nombre_Gestante]);
+    
+            
+            
+            
+            
+           // "Rut_Solicitante", "Nombre_Medico", "Nacionalidad", "Creencias", "Nombre_Gestante", "Nombre_Acom", "Fecha_Prob_Parto", "Fecha_Ult_Regla", "Tipo_Parto", "Conversado_Medico", "Acomp_Continuo", "Metd_No_Farma", "Aromaterapia", "Musicoterapia", "Uso_Guateros", "Contacto_Piel", "Permanencia_Bebe", "Lactancia_Materna", "Asesoria_Lactancia", "Observaciones") VALUES ( $1, $2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20)', [Rut_Solicitante,Nombre_Medico,Nacionalidad,Creencias ,Nombre_Gestante ,Nombre_Acom ,Fecha_Prob_Parto,Fecha_Ult_Regla,Tipo_Parto,Conversado_Medico,Acomp_Continuo,Metd_No_Farma,Aromaterapia,Musicoterapia,Uso_Guateros,Contacto_Piel,Permanencia_Bebe,Lactancia_Materna,Asesoria_Lactancia,Observaciones,]);
     
         res.status(201).json({
            ok: true,
@@ -665,9 +670,92 @@ Observaciones,
         };
     
 
+const RecuperarPass = async (req, res) => {
+             
+     
+            const {NroDocumento,Email, Contraseña, Contraseña2} = req.body;
+            
+            let rutUnico = await verificarNroDocumento(NroDocumento);
+            let emailUnico = await verificarmail(Email);
+            const Datosbd = await usuariodata2bd(Email);
+         
+            //revisar rut & email en la BD
+            if (rutUnico == false) {
+                 return res.status(400).json({
+                     ok: false,
+                     message: 'Rut (o Nro Documento) no se encuentra registrado',
+                  }) 
+             }
+     
+            if (emailUnico==false) {
+                 return res.status(400).json({
+                     ok: false,
+                     message: 'Email no se encuentra registrado',
+                  }) 
+             }
 
+             if (Contraseña !== Contraseña2) {
+                return res.status(400).json({
+                    ok: false,
+                    message: 'Las Contraseñas no son iguales',
+                 }) 
+            }
 
+            const validPassword = bcrypt.compareSync(Contraseña,Datosbd.ContraseñaPcte);
 
+            if (validPassword==true) {
+                return res.status(400).json({
+                    ok: false,
+                    message: 'No se ha logrado actualizar Contraseña. Intenta usarla al ingresar.',
+                 }) 
+            }
+
+     
+             //encriptar contraseña
+             
+             const salt =bcrypt.genSaltSync();
+             let pswd2bcrpt = bcrypt.hashSync(Contraseña,salt);
+         
+             try {
+             
+             const response = await pool.query('UPDATE public."Paciente" SET "ContraseñaPcte" = $1 WHERE "NroDocumentoPcte" = $2 AND "EmailPcte" = $3', [pswd2bcrpt,NroDocumento,Email]);
+             
+             
+             //INSERT INTO public."Paciente"("NroDocumentoPcte", "TipoDocumentoPcte", "NombrePcte", "ApellidoPaternoPcte", "ApellidoMaternoPcte", "DireccionPcte", "NacionalidadPcte", "EmailPcte", "ContraseñaPcte", "TelefonoPcte", "PrevisionPcte", "FNacPcte", "ObservacionesPcte", "DocumentoAntiguoPcte", "EstadoCivilPcte", "AvalPcte", "FPPPcte", "FUROcte", "EPTok")VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, null, null, $13, null, null, $14, null)', [NroDocumento,TipoDocuemnto,Nombre,ApellidoPaterno,ApellidoMaterno, Direccion, Nacionalidad, Email, pswd2bcrpt, Telefono, Prevision, FechaNacimiento, EstadoCivil,Furo]
+             
+              res.status(201).json({
+                 ok: true,
+                 message: 'Contraseña Actualizada Existosamente',
+              }) 
+             } catch (error) {
+                 res.status(500).json({
+                     ok: false,
+                     message: 'Comuniquese con el Administrador del sistema',   
+                 })
+              console.log(error); 
+             }
+          
+          };
+
+const postMedicoQuirurgico = async (req, res) => {
+  const {NroDocumento,FechaSolicitud,Especialidad,Observ} = req.body;
+  
+  try {
+      const response = await pool.query('INSERT INTO public."HoraMQ"("RutPaciente", "FechaRealizada", "EspecialidadSolicitada", "Observaciones") VALUES ($1, $2, $3, $4)', [NroDocumento,FechaSolicitud,Especialidad,Observ]);
+     
+      res.status(201).json({
+         ok: true,
+         message: 'Solicitud MQ Creado',
+      }) 
+     } catch (error) {
+         res.status(500).json({
+             ok: false,
+             message: 'Comuniquese con el Administrador del sistema',   
+         })
+      console.log(error); 
+     }
+  
+  };
 
 
 
@@ -715,7 +803,8 @@ module.exports = {
     postVisGuiada,
     postBonoPad,
     postAcuerNacim,
-
+    RecuperarPass,
+    postMedicoQuirurgico,
 
     getPresupuesto,
 };
