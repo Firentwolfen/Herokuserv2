@@ -2,7 +2,7 @@ const { Router } = require('express');
 const { check } = require('express-validator');
 const router = Router();
 
-const { getTallerInfo, getAgendaTaller, getUsers, getUserId, getUserById, createUser, updateUser, deleteUser, getHora, updateHora,createHoraEvaLact, getTalleresInfo, getTalleresHoras, createAgendTaller,deleteAgendTaller, crearUsuario, loginUsuario, revalidarToken, updateavtrurl, updatemailphonepass, updateexpotkn, getAgendaHoraUser, getEspecialidadInfo, getNacionalidadInfo, getMedicoEspeInfo, getCreenciasInfo, getPrevision, getPresupuesto, postPresupuesto, postVisGuiada, postBonoPad, postAcuerNacim} = require('../controllers/index.controller');
+const { getTallerInfo, getAgendaTaller, RecuperarPass, getUsers, getUserId, getUserById, createUser, updateUser, deleteUser, getHora, updateHora,createHoraEvaLact, getTalleresInfo, getTalleresHoras, createAgendTaller,deleteAgendTaller, crearUsuario, loginUsuario, revalidarToken, updateavtrurl, updatemailphonepass, updateexpotkn, getAgendaHoraUser, getEspecialidadInfo, getNacionalidadInfo, getMedicoEspeInfo, getCreenciasInfo, getPrevision, getPresupuesto, postPresupuesto, postVisGuiada, postBonoPad, postAcuerNacim, postMedicoQuirurgico} = require('../controllers/index.controller');
 const { validarCampos } = require('../middlewares/validar-campos');
 const { validarJWT } = require('../middlewares/validar-jwt');
 
@@ -42,7 +42,15 @@ router.post('/postPresupuesto',postPresupuesto );
 router.post('/postVisitaGuiada',postVisGuiada);
 router.post('/postBonoPad',postBonoPad);
 router.post('/postAcuerdoNacim',postAcuerNacim);
+router.post('/postMQ',postMedicoQuirurgico);
 
+router.post('/RecuperarPassword',
+[
+    check('NroDocumento', 'El Numero de Documento es Obligatorio').not().isEmpty(),
+    check('Email', 'El correo es Obligatorio').isEmail(),
+    check('Contraseña', 'La contraseña debe ser minimo de 7 caracteres').isLength({ min: 7}),
+    validarCampos]
+, RecuperarPass );
 
 
 
